@@ -33,6 +33,8 @@ class EJuiComboBox extends CJuiInputWidget
 	public $scriptSelector;
 	public $defaultOptions = array('allowText' => true);
 
+	public $dropDownOptions = array('style' => 'display:none;');
+	
 	protected function setSelector($id, $script, $event=null)
 	{
 		if ($this->scriptSelector) {
@@ -71,7 +73,7 @@ class EJuiComboBox extends CJuiInputWidget
 		else
 			$data = array();
 
-		echo CHtml::dropDownList(null, null, $data, array('id' => $id . '_select', 'style'=>'display:none;'));
+		echo CHtml::dropDownList(null, null, $data, array_merge(array('id' => $id . '_select'), $this->dropDownOptions));
 
 		if ($this->hasModel())
 			echo CHtml::activeTextField($this->model, $this->attribute, $this->htmlOptions);
